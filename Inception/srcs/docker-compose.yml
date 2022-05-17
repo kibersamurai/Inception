@@ -7,11 +7,45 @@ networks:
 services:
   nginx:
         container_name: nginx
-        build:  ./nginx
+        build:  ./requirements/nginx
         ports: 
                 -"443:443"
         volumes:
-
+                - wordpress:/var/www/html/wordpress
+        networks:
+                - inception
+        depends_on:
+                - wordpress
+  wordpress:
+          container_name: wordpress
+          build: ./requirements/wordpress
+          volumes:
+                  - wordpress:/var/www/html/wordpress
+          networks:
+                  - inception
+          depends_on:
+                  - mariadb
+  mariadb:
+          container_name: mariadb
+          build: ./requirements/mariadb
+          volumes: 
+                - db:/var/lib/mysql
+          networks: 
+                - inception
 volumes:
-        DB:
-        WordPress:
+        db:
+                name: db
+                driver: local
+                driver_opts:
+                        type: none
+                        o: bind
+                        device: /home/${USERNAME}/data/db
+
+        wordpress:
+                name: wordpress
+                driver: local
+                driver_opts:
+                        type: none
+                        o: bind
+                        device: /home/${USERNAME}/data/wordpress
+
