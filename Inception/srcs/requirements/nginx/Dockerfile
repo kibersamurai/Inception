@@ -1,7 +1,9 @@
 FROM debian:buster
 LABEL maintainer="bprovolo"
 RUN apt update && apt install -y nginx openssl nano curl net-tools
-COPY tools/* /tmp/
+COPY ./conf/ /var/www/
 EXPOSE 443
-CMD sh -c "ls /tmp && sh /tmp/start.sh"
+RUN chmod +x /var/www/nginx.sh
+ENTRYPOINT [ "/var/www/nginx.sh" ]
+CMD ["nginx", "-g", "daemon off;"]
 
