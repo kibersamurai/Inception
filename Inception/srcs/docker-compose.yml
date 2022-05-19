@@ -1,4 +1,4 @@
-version: "3.9"
+version: "1.25.3"
 
 networks:
         inception:
@@ -39,7 +39,7 @@ volumes:
                 driver_opts:
                         type: none
                         o: bind
-                        device: /home/${USERNAME}/data/db
+                        device: /home/bprovolo/data/db
 
         wordpress:
                 name: wordpress
@@ -47,5 +47,5 @@ volumes:
                 driver_opts:
                         type: none
                         o: bind
-                        device: /home/${USERNAME}/data/wordpress
+                        device: /home/bprovolo/data/wordpress
 
