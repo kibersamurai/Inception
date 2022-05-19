@@ -10,8 +10,8 @@ services:
         build:  ./requirements/nginx
         ports: 
                 - "443:443"
-        volumes:
-                - wordpress:/var/www/html/wordpress
+        # volumes:
+        #         - wordpress:/var/www/html/wordpress
         networks:
                 - inception
         depends_on:
@@ -19,8 +19,8 @@ services:
   wordpress:
           container_name: wordpress
           build: ./requirements/wordpress
-          volumes:
-                  - wordpress:/var/www/html/wordpress
+        #   volumes:
+        #           - wordpress:/var/www/html/wordpress
           networks:
                   - inception
           depends_on:
@@ -30,8 +30,8 @@ services:
           env_file: .env
           build: ./requirements/mariadb
           restart: always
-          volumes: 
-                - db:/var/lib/mysql
+        #   volumes: 
+        #         - db:/var/lib/mysql
           networks: 
                 - inception
 # volumes:
