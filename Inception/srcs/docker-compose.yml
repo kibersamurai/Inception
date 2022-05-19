@@ -41,7 +41,7 @@ volumes:
                 driver_opts:
                         type: none
                         o: bind
-                        device: /home/bprovolo/data/db
+                        # device: /home/bprovolo/data/db
 
         wordpress:
                 name: wordpress
@@ -49,5 +49,5 @@ volumes:
                 driver_opts:
                         type: none
                         o: bind
-                        device: /home/bprovolo/data/wordpress
+                        # device: /home/bprovolo/data/wordpress
 
