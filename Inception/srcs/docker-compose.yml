@@ -34,20 +34,20 @@ services:
                 - db:/var/lib/mysql
           networks: 
                 - inception
-volumes:
-        db:
-                name: db
-                driver: local
-                driver_opts:
-                        type: none
-                        o: bind
-                        # device: /home/bprovolo/data/db
+# volumes:
+#         db:
+#                 name: db
+#                 driver: local
+#                 driver_opts:
+#                         type: none
+#                         o: bind
+#                         # device: /home/bprovolo/data/db
 
-        wordpress:
-                name: wordpress
-                driver: local
-                driver_opts:
-                        type: none
-                        o: bind
-                        # device: /home/bprovolo/data/wordpress
+#         wordpress:
+#                 name: wordpress
+#                 driver: local
+#                 driver_opts:
+#                         type: none
+#                         o: bind
+#                         # device: /home/bprovolo/data/wordpress
 
