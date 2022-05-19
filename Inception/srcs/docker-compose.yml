@@ -37,7 +37,7 @@ services:
 volumes:
         db:
                 name: db
-                driver: local
+                # driver: local
                 driver_opts:
                         type: none
                         o: bind
