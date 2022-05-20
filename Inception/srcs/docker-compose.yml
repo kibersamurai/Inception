@@ -1,23 +1,23 @@
 version: "3.5"
 
-# volumes:
+volumes:
        
 
-#         wordpress:
-#                 driver: local
-#                 name: wordpress
-#                 driver_opts:
-#                         type: none
-#                         o: bind
-#                         device: /home/bprovolo/data/wordpress
+        wordpress:
+                driver: local
+                name: wordpress
+                driver_opts:
+                        type: none
+                        o: bind
+                        device: /home/bprovolo/data/wordpress
 
-#         db:
-#                 driver: local
-#                 name: db
-#                 driver_opts:
-#                         type: none
-#                         o: bind
-#                         device: /home/bprovolo/data/db
+        db:
+                driver: local
+                name: db
+                driver_opts:
+                        type: none
+                        o: bind
+                        device: /home/bprovolo/data/db
 
 networks:
         inception:
