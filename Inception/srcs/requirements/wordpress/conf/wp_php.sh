@@ -23,7 +23,7 @@ if[ ! -f /var/www/html/wp-config.php ]; then
   --admin_password=${WORDPRESS_ADMIN_PASSWORD} \
   --admin_email=${WORDPRESS_ADMIN_EMAIL}
  wp user create --allow-root bprovolo2 bprovolo2@42.fr --user_pass=klop
- mv /var/www/object-cache.php /var/www/html/wp-content/
+#  mv /var/www/object-cache.php /var/www/html/wp-content/
 fi
-service redis-server start
+# service redis-server start
 exec "$@"
