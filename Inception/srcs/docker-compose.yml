@@ -49,8 +49,8 @@ services:
         restart: always
         build: ./requirements/wordpress
         user: root
-        volumes:
-                  - wordpress:/var/www/html
+        # volumes:
+        #           - wordpress:/var/www/html
         networks:
                   - inception
 
@@ -59,8 +59,8 @@ services:
         env_file: .env
         build: ./requirements/mariadb/
         restart: always
-        volumes: 
-                - db:/var/lib/mysql
+        # volumes: 
+        #         - db:/var/lib/mysql
         user: root
         networks: 
                 - inception
