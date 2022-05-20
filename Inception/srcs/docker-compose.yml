@@ -27,8 +27,8 @@ networks:
 services:
   nginx:
         image: nginx
-        volumes:
-        - wordpress:/var/www/html
+        # volumes:
+        # - wordpress:/var/www/html
         container_name: nginx
         build:  ./requirements/nginx
         ports: 
