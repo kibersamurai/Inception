@@ -6,7 +6,6 @@ sed -i "s/\#port   /port    /" "/etc/mysql/mariadb.conf.d/50-server.cnf"
 chown -R mysql:mysql /var/lib/mysql
 # даем права
 echo "Creating WP DB"
-
 if [ ! -d var/lib/mysql/wp ]; then
 service mysql start
 mysql -u root -e "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE"
@@ -20,6 +19,5 @@ mkdir  /var/run/mysqld
 touch /var/run/mysqld/mysqld.pid
 mkfifo /var/run/mysqld/mysqld.sock
 fi
-
 chown -R mysql /var/run/mysqld
 exec "$@"
