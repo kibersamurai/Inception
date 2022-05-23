@@ -1,15 +1,13 @@
 version: "3.7"
 
 volumes:
-       
-
         wordpress:
                 driver: local
                 name: wordpress
                 driver_opts:
                         type: none
                         o: bind
-                        device: /home/bprovolo/data/wordpress
+                        device: /home/bprovolo/data/wp
 
         db:
                 driver: local
@@ -28,12 +26,11 @@ services:
   nginx:
         image: nginx
         volumes:
-        - wordpress:/var/www/html
+                - wordpress:/var/www/html
         container_name: nginx
         build:  ./requirements/nginx
         ports: 
                 - "443:443"
-        user: root
         env_file: .env
         restart: always
         networks:
@@ -50,7 +47,6 @@ services:
         container_name: wordpress
         restart: always
         build: ./requirements/wordpress
-        user: root
         networks:
                   - inception
 
@@ -60,8 +56,7 @@ services:
         env_file: .env
         restart: always
         volumes: 
-          - db:/var/lib/mysql
+                - db:/var/lib/mysql
         build: ./requirements/mariadb
-        user: root
         networks: 
                 - inception

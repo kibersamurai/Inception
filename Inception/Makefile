@@ -1,12 +1,35 @@
-all:
-	sudo mkdir /home/bprovolo/data/
-	sudo mkdir /home/bprovolo/data/wordpress
-	sudo mkdir /home/bprovolo/data/db
+all:	up
 
-	docker-compose -f srcs/docker-compose.yml up
-clean:
-	docker-compose -f srcs/docker-compose.yml down
-fclean: clean
-	sudo docker rmi -f $(sudo docker images -qa)
-	sudo docker volume rm $(sudo docker volume ls -q)
-	sudo docker system prune -a --force
+up:
+		@sudo mkdir -p /home/${USER}/data/db
+		@sudo mkdir -p /home/${USER}/data/wp
+		@sudo docker-compose -f srcs/docker-compose.yml up -d
+
+down:
+		@sudo docker-compose -f srcs/docker-compose.yml down
+
+ps:
+		@sudo docker-compose -f srcs/docker-compose.yml ps
+
+clean:	down
+		@docker volume rm -f db wp
+
+fclean:	down
+		docker rm -f $(sudo docker ps -qa)
+		docker rm -f $(sudo docker ps -ls)
+		docker volume rm $(sudo docker volume ls -q)
+		docker system prune -a --volume
+		docker system prune -a --force
+		sudo rm -Rf /home/${USER}/data/db
+		sudo rm -Rf /home/${USER}/data/wp
+		mkdir /home/${USER}/data/db
+		mkdir /home/${USER}/data/wp
+		
+
+re:
+		@mkdir -p ../data/wp
+		@mkdir -p ../data/db
+		@docker-compose -f srcs/docker-compose.yml build
+		docker-compose -f srcs/docker-compose.yml up -d
+
+.PHONY:	all up down ps clean fclean re
