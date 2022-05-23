@@ -1,6 +1,8 @@
 all:
-	sudo mkdir /home/bprovolo/data/db
+	sudo mkdir /home/bprovolo/data/
 	sudo mkdir /home/bprovolo/data/wordpress
+	sudo mkdir /home/bprovolo/data/db
+
 	docker-compose -f srcs/docker-compose.yml up
 clean:
 	docker-compose -f srcs/docker-compose.yml down
