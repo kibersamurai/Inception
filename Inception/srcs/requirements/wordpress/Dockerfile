@@ -10,7 +10,7 @@
 FROM debian:buster
 
 RUN apt-get update
-RUN apt-get -y install php7.3 php-mysqli php-fpm curl sendmail
+RUN apt-get -y install php7.3 php-mysqli php-fpm curl sendmail net-tools
 
 EXPOSE 9000
 

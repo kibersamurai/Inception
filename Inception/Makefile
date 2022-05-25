@@ -15,21 +15,18 @@ clean:	down
 		@docker volume rm -f db wp
 
 fclean:	down
-		docker rm -f $(sudo docker ps -qa)
-		docker rm -f $(sudo docker ps -ls)
-		docker volume rm $(sudo docker volume ls -q)
-		docker system prune -a --volume
-		docker system prune -a --force
+	
+		sudo docker system prune -a --force
 		sudo rm -Rf /home/${USER}/data/db
 		sudo rm -Rf /home/${USER}/data/wp
-		mkdir /home/${USER}/data/db
-		mkdir /home/${USER}/data/wp
+		sudo mkdir /home/${USER}/data/db
+		sudo mkdir /home/${USER}/data/wp
 		
 
-re:
-		@mkdir -p ../data/wp
-		@mkdir -p ../data/db
-		@docker-compose -f srcs/docker-compose.yml build
-		docker-compose -f srcs/docker-compose.yml up -d
+re:		fclean
+		@sudo mkdir -p ../data/wp
+		@sudo mkdir -p ../data/db
+		@sudo docker-compose -f srcs/docker-compose.yml build
+		@sudo docker-compose -f srcs/docker-compose.yml up -d
 
 .PHONY:	all up down ps clean fclean re

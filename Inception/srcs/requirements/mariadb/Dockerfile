@@ -1,6 +1,6 @@
 FROM debian:buster
 LABEL maintainer="bprovolo"
-RUN apt update && apt install -y mariadb-server 
+RUN apt update && apt install -y mariadb-server net-tools
 COPY ./conf/50-server.cnf  /etc/mysql/mariadb.conf.d/
 COPY ./tools /
 EXPOSE 3306
