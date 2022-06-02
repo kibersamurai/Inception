@@ -21,12 +21,5 @@ fclean:	down
 		sudo rm -Rf /home/${USER}/data/wp
 		sudo mkdir /home/${USER}/data/db
 		sudo mkdir /home/${USER}/data/wp
-		
-
-re:		fclean
-		@sudo mkdir -p ../data/wp
-		@sudo mkdir -p ../data/db
-		@sudo docker-compose -f srcs/docker-compose.yml build
-		@sudo docker-compose -f srcs/docker-compose.yml up -d
 
 .PHONY:	all up down ps clean fclean re
